@@ -1,0 +1,328 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+  \usepackage{amssymb}
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={STA\_104\_HW2.R},
+  pdfauthor={pumad},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{STA\_104\_HW2.R}
+\author{pumad}
+\date{2021-10-21}
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Exercise 8}
+\NormalTok{siblings}\OtherTok{\textless{}{-}}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{hometown=}\FunctionTok{c}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\StringTok{"rural"}\NormalTok{,}\DecValTok{24}\NormalTok{),}\FunctionTok{rep}\NormalTok{(}\StringTok{"urban"}\NormalTok{,}\DecValTok{17}\NormalTok{)),}
+                     \AttributeTok{siblings=}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{,}
+                                \DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{nsim}\OtherTok{=}\DecValTok{10000}
+\NormalTok{permDiffs}\OtherTok{=}\FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{,nsim)}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{nsim)\{}
+\NormalTok{  new.dat}\OtherTok{=}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{sib=}\FunctionTok{sample}\NormalTok{(siblings}\SpecialCharTok{$}\NormalTok{siblings, }\AttributeTok{replace =} \ConstantTok{FALSE}\NormalTok{), }\AttributeTok{home=}\NormalTok{siblings}\SpecialCharTok{$}\NormalTok{hometown)}
+\NormalTok{  permDiffs[i]}\OtherTok{=}\FunctionTok{diff}\NormalTok{(}\FunctionTok{tapply}\NormalTok{(new.dat}\SpecialCharTok{$}\NormalTok{sib, new.dat}\SpecialCharTok{$}\NormalTok{home, mean))}
+\NormalTok{\}}
+
+\NormalTok{only.rural }\OtherTok{=} \FunctionTok{subset}\NormalTok{(siblings, hometown}\SpecialCharTok{==}\StringTok{"rural"}\NormalTok{)}
+\NormalTok{mean.rural }\OtherTok{=} \FunctionTok{mean}\NormalTok{(only.rural}\SpecialCharTok{$}\NormalTok{siblings)}
+
+\NormalTok{only.urban }\OtherTok{=} \FunctionTok{subset}\NormalTok{(siblings, hometown}\SpecialCharTok{==}\StringTok{"urban"}\NormalTok{)}
+\NormalTok{mean.urban }\OtherTok{=} \FunctionTok{mean}\NormalTok{(only.urban}\SpecialCharTok{$}\NormalTok{siblings)}
+
+\NormalTok{actual.diff1 }\OtherTok{=}\NormalTok{ mean.rural}\SpecialCharTok{{-}}\NormalTok{mean.urban}
+\NormalTok{actual.diff2 }\OtherTok{=}\NormalTok{ mean.urban}\SpecialCharTok{{-}}\NormalTok{mean.rural}
+
+\NormalTok{lower}\OtherTok{=} \FunctionTok{sum}\NormalTok{(permDiffs}\SpecialCharTok{\textless{}=}\NormalTok{actual.diff2)}
+\NormalTok{upper}\OtherTok{=}\FunctionTok{sum}\NormalTok{(permDiffs}\SpecialCharTok{\textgreater{}=}\NormalTok{actual.diff1)}
+\NormalTok{pv.b}\OtherTok{=}\NormalTok{(lower}\SpecialCharTok{+}\NormalTok{upper)}\SpecialCharTok{/}\NormalTok{nsim}
+
+
+\CommentTok{\# Exercise 10}
+\NormalTok{Apple}\OtherTok{\textless{}{-}}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{Group=}\FunctionTok{c}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\StringTok{"experimental"}\NormalTok{,}\DecValTok{5}\NormalTok{),}\FunctionTok{rep}\NormalTok{(}\StringTok{"control"}\NormalTok{,}\DecValTok{6}\NormalTok{)),}
+                  \AttributeTok{numdata=}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\FloatTok{1.383}\NormalTok{, }\SpecialCharTok{{-}}\FloatTok{0.674}\NormalTok{, }\FloatTok{0.431}\NormalTok{, }\SpecialCharTok{{-}}\FloatTok{0.967}\NormalTok{, }\SpecialCharTok{{-}}\FloatTok{0.431}\NormalTok{, }\FloatTok{0.674}\NormalTok{, }\DecValTok{0}\NormalTok{, }\FloatTok{0.210}\NormalTok{, }\FloatTok{1.383}\NormalTok{, }\FloatTok{0.967}\NormalTok{, }\SpecialCharTok{{-}}\FloatTok{0.210}\NormalTok{))}
+
+\NormalTok{n }\OtherTok{=} \FunctionTok{length}\NormalTok{(Apple}\SpecialCharTok{$}\NormalTok{Group)}
+\NormalTok{p }\OtherTok{=} \DecValTok{462}
+\NormalTok{variable }\OtherTok{=}\NormalTok{ Apple}\SpecialCharTok{$}\NormalTok{numdata}
+
+\NormalTok{PermSamples }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{, }\AttributeTok{nrow=}\NormalTok{n, }\AttributeTok{ncol =}\NormalTok{ p)}
+
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{p)\{}
+\NormalTok{  PermSamples[,i] }\OtherTok{=} \FunctionTok{sample}\NormalTok{(variable, }\AttributeTok{size =}\NormalTok{ n, }\AttributeTok{replace=}\ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{\}}
+\NormalTok{PermSamples[, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         [,1]   [,2]   [,3]   [,4]   [,5]
+##  [1,] -0.674 -1.383  0.000  0.674 -0.967
+##  [2,]  0.431  0.967 -0.431  0.967 -0.674
+##  [3,]  0.674  1.383  0.431 -1.383  0.210
+##  [4,] -0.967 -0.210 -0.967 -0.210  0.000
+##  [5,]  0.967  0.210  1.383 -0.674  0.674
+##  [6,] -0.210 -0.431 -1.383  0.210 -0.210
+##  [7,]  0.210  0.431  0.210  0.431 -1.383
+##  [8,] -0.431  0.000  0.674 -0.967  0.431
+##  [9,] -1.383 -0.674 -0.210  1.383 -0.431
+## [10,]  1.383  0.674 -0.674 -0.431  1.383
+## [11,]  0.000 -0.967  0.967  0.000  0.967
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Perm.test.stat1 }\OtherTok{=}\NormalTok{ Perm.test.stat2 }\OtherTok{=} \FunctionTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{, p)}
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{p)\{}
+\NormalTok{  Perm.test.stat1[i] }\OtherTok{=} \FunctionTok{abs}\NormalTok{(}\FunctionTok{mean}\NormalTok{(PermSamples[Apple}\SpecialCharTok{$}\NormalTok{Group}\SpecialCharTok{==}\StringTok{\textquotesingle{}experimental\textquotesingle{}}\NormalTok{, i] }\SpecialCharTok{{-}} 
+                                  \FunctionTok{mean}\NormalTok{(PermSamples[Apple}\SpecialCharTok{$}\NormalTok{Group}\SpecialCharTok{==}\StringTok{\textquotesingle{}control\textquotesingle{}}\NormalTok{, i])))}
+  
+\NormalTok{  Perm.test.stat2[i] }\OtherTok{=} \FunctionTok{abs}\NormalTok{(}\FunctionTok{median}\NormalTok{(PermSamples[Apple}\SpecialCharTok{$}\NormalTok{Group}\SpecialCharTok{==}\StringTok{\textquotesingle{}experimental\textquotesingle{}}\NormalTok{, i] }\SpecialCharTok{{-}} 
+                                    \FunctionTok{median}\NormalTok{(PermSamples[Apple}\SpecialCharTok{$}\NormalTok{Group}\SpecialCharTok{==}\StringTok{\textquotesingle{}control\textquotesingle{}}\NormalTok{, i])))}
+\NormalTok{\}}
+
+\NormalTok{test.stat1 }\OtherTok{=} \FunctionTok{abs}\NormalTok{(}\FunctionTok{mean}\NormalTok{(Apple}\SpecialCharTok{$}\NormalTok{numdata[Apple}\SpecialCharTok{$}\NormalTok{Group}\SpecialCharTok{==}\StringTok{\textquotesingle{}experimental\textquotesingle{}}\NormalTok{]) }\SpecialCharTok{{-}} \FunctionTok{mean}\NormalTok{(Apple}\SpecialCharTok{$}\NormalTok{numdata[Apple}\SpecialCharTok{$}\NormalTok{Group}\SpecialCharTok{==}\StringTok{\textquotesingle{}control\textquotesingle{}}\NormalTok{]))}
+\NormalTok{test.stat2 }\OtherTok{=} \FunctionTok{abs}\NormalTok{(}\FunctionTok{median}\NormalTok{(Apple}\SpecialCharTok{$}\NormalTok{numdata[Apple}\SpecialCharTok{$}\NormalTok{Group}\SpecialCharTok{==}\StringTok{\textquotesingle{}experimental\textquotesingle{}}\NormalTok{]) }\SpecialCharTok{{-}} \FunctionTok{median}\NormalTok{(Apple}\SpecialCharTok{$}\NormalTok{numdata[Apple}\SpecialCharTok{$}\NormalTok{Group}\SpecialCharTok{==}\StringTok{\textquotesingle{}control\textquotesingle{}}\NormalTok{]))}
+
+\NormalTok{test.stat1; test.stat2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.1088
+\end{verbatim}
+
+\begin{verbatim}
+## [1] 1.116
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(Perm.test.stat1 }\SpecialCharTok{\textgreater{}=}\NormalTok{ test.stat1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.03679654
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(Perm.test.stat2 }\SpecialCharTok{\textgreater{}=}\NormalTok{ test.stat2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.05194805
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Exercise 18}
+\CommentTok{\# Wilcoxon}
+\NormalTok{Exp }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{11}\NormalTok{, }\DecValTok{33}\NormalTok{, }\DecValTok{48}\NormalTok{, }\DecValTok{34}\NormalTok{, }\DecValTok{112}\NormalTok{, }\DecValTok{369}\NormalTok{, }\DecValTok{64}\NormalTok{, }\DecValTok{44}\NormalTok{)}
+\NormalTok{Cont }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{177}\NormalTok{, }\DecValTok{80}\NormalTok{, }\DecValTok{141}\NormalTok{, }\DecValTok{332}\NormalTok{)}
+\NormalTok{W}\OtherTok{=}\FunctionTok{wilcox.test}\NormalTok{(Exp, Cont, }\AttributeTok{conf.int=}\ConstantTok{TRUE}\NormalTok{,}\AttributeTok{conf.level =} \FloatTok{0.95}\NormalTok{);W}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Wilcoxon rank sum exact test
+## 
+## data:  Exp and Cont
+## W = 5, p-value = 0.07273
+## alternative hypothesis: true location shift is not equal to 0
+## 95 percent confidence interval:
+##  -284   32
+## sample estimates:
+## difference in location 
+##                   -102
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Permutation}
+\NormalTok{Apple}\OtherTok{\textless{}{-}}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{Group=}\FunctionTok{c}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\StringTok{"experimental"}\NormalTok{,}\DecValTok{8}\NormalTok{),}\FunctionTok{rep}\NormalTok{(}\StringTok{"control"}\NormalTok{,}\DecValTok{4}\NormalTok{)),}
+                  \AttributeTok{numdata=}\FunctionTok{c}\NormalTok{(}\DecValTok{11}\NormalTok{, }\DecValTok{33}\NormalTok{, }\DecValTok{48}\NormalTok{, }\DecValTok{34}\NormalTok{, }\DecValTok{112}\NormalTok{, }\DecValTok{369}\NormalTok{, }\DecValTok{64}\NormalTok{, }\DecValTok{44}\NormalTok{, }\DecValTok{177}\NormalTok{, }\DecValTok{80}\NormalTok{, }\DecValTok{141}\NormalTok{, }\DecValTok{332}\NormalTok{))}
+
+\NormalTok{n }\OtherTok{=} \FunctionTok{length}\NormalTok{(Apple}\SpecialCharTok{$}\NormalTok{Group)}
+\NormalTok{p }\OtherTok{=} \DecValTok{495}
+\NormalTok{variable }\OtherTok{=}\NormalTok{ Apple}\SpecialCharTok{$}\NormalTok{numdata}
+
+\NormalTok{PermSamples }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{, }\AttributeTok{nrow=}\NormalTok{n, }\AttributeTok{ncol =}\NormalTok{ p)}
+
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{p)\{}
+\NormalTok{  PermSamples[,i] }\OtherTok{=} \FunctionTok{sample}\NormalTok{(variable, }\AttributeTok{size =}\NormalTok{ n, }\AttributeTok{replace=}\ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{\}}
+\NormalTok{PermSamples[, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       [,1] [,2] [,3] [,4] [,5]
+##  [1,]   64  112  112  141   48
+##  [2,]   80   33   44   33   34
+##  [3,]  177  332   80   64  141
+##  [4,]  141  177   64  369   44
+##  [5,]   11   80  332  177   80
+##  [6,]   33   34   11  112   33
+##  [7,]  112   48   34   80  112
+##  [8,]   44   44  141   48   11
+##  [9,]  369  141  177   34  332
+## [10,]  332   64  369   44   64
+## [11,]   48  369   48  332  369
+## [12,]   34   11   33   11  177
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Perm.test.stat1 }\OtherTok{=}\NormalTok{ Perm.test.stat2 }\OtherTok{=} \FunctionTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{, p)}
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{p)\{}
+\NormalTok{  Perm.test.stat1[i] }\OtherTok{=} \FunctionTok{abs}\NormalTok{(}\FunctionTok{mean}\NormalTok{(PermSamples[Apple}\SpecialCharTok{$}\NormalTok{Group}\SpecialCharTok{==}\StringTok{\textquotesingle{}experimental\textquotesingle{}}\NormalTok{, i] }\SpecialCharTok{{-}} 
+                                  \FunctionTok{mean}\NormalTok{(PermSamples[Apple}\SpecialCharTok{$}\NormalTok{Group}\SpecialCharTok{==}\StringTok{\textquotesingle{}control\textquotesingle{}}\NormalTok{, i])))}
+  
+\NormalTok{  Perm.test.stat2[i] }\OtherTok{=} \FunctionTok{abs}\NormalTok{(}\FunctionTok{median}\NormalTok{(PermSamples[Apple}\SpecialCharTok{$}\NormalTok{Group}\SpecialCharTok{==}\StringTok{\textquotesingle{}experimental\textquotesingle{}}\NormalTok{, i] }\SpecialCharTok{{-}} 
+                                    \FunctionTok{median}\NormalTok{(PermSamples[Apple}\SpecialCharTok{$}\NormalTok{Group}\SpecialCharTok{==}\StringTok{\textquotesingle{}control\textquotesingle{}}\NormalTok{, i])))}
+\NormalTok{\}}
+
+\NormalTok{test.stat1 }\OtherTok{=} \FunctionTok{abs}\NormalTok{(}\FunctionTok{mean}\NormalTok{(Apple}\SpecialCharTok{$}\NormalTok{numdata[Apple}\SpecialCharTok{$}\NormalTok{Group}\SpecialCharTok{==}\StringTok{\textquotesingle{}experimental\textquotesingle{}}\NormalTok{]) }\SpecialCharTok{{-}} \FunctionTok{mean}\NormalTok{(Apple}\SpecialCharTok{$}\NormalTok{numdata[Apple}\SpecialCharTok{$}\NormalTok{Group}\SpecialCharTok{==}\StringTok{\textquotesingle{}control\textquotesingle{}}\NormalTok{]))}
+\NormalTok{test.stat2 }\OtherTok{=} \FunctionTok{abs}\NormalTok{(}\FunctionTok{median}\NormalTok{(Apple}\SpecialCharTok{$}\NormalTok{numdata[Apple}\SpecialCharTok{$}\NormalTok{Group}\SpecialCharTok{==}\StringTok{\textquotesingle{}experimental\textquotesingle{}}\NormalTok{]) }\SpecialCharTok{{-}} \FunctionTok{median}\NormalTok{(Apple}\SpecialCharTok{$}\NormalTok{numdata[Apple}\SpecialCharTok{$}\NormalTok{Group}\SpecialCharTok{==}\StringTok{\textquotesingle{}control\textquotesingle{}}\NormalTok{]))}
+
+\NormalTok{test.stat1; test.stat2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 93.125
+\end{verbatim}
+
+\begin{verbatim}
+## [1] 113
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(Perm.test.stat1 }\SpecialCharTok{\textgreater{}=}\NormalTok{ test.stat1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.2222222
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(Perm.test.stat2 }\SpecialCharTok{\textgreater{}=}\NormalTok{ test.stat2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.1131313
+\end{verbatim}
+
+\end{document}
